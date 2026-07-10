@@ -34,9 +34,14 @@
   header .wrap {
     display: flex; align-items: center; justify-content: space-between;
     padding-top: 16px; padding-bottom: 16px;
+    max-width: none;
+    padding-left: 32px; padding-right: 32px;
   }
-  .logo { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+  .logo { display: flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; }
   .logo svg { flex-shrink: 0; }
+  .logo .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .logo .logo-text .line1 { font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; }
+  .logo .logo-text .line2 { font-weight: 700; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--ink-soft); }
   nav a { color: var(--ink-soft); text-decoration: none; margin-left: 28px; font-size: 0.95rem; }
   nav a:hover { color: var(--ink); }
   .cta-btn {
@@ -228,12 +233,15 @@
 <header>
   <div class="wrap">
     <a href="#" class="logo">
-      <svg width="22" height="19" viewBox="0 0 70 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg width="24" height="21" viewBox="0 0 70 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M0 60 L20 20 L20 60 Z" fill="#7a3b2e"/>
         <path d="M25 60 L45 10 L45 60 Z" fill="#7a3b2e"/>
         <path d="M50 60 L70 0 L70 60 Z" fill="#7a3b2e"/>
       </svg>
-      Russian River AI Partners
+      <span class="logo-text">
+        <span class="line1">RUSSIAN RIVER</span>
+        <span class="line2">AI PARTNERS</span>
+      </span>
     </a>
     <nav>
       <a href="#approach">Approach</a>
@@ -384,7 +392,15 @@
 
 <footer>
   <div class="wrap">
-    <p>Russian River AI Partners · Serving Sonoma County &amp; the North Bay</p>
+    <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:10px;">
+      <svg width="20" height="17" viewBox="0 0 70 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M0 60 L20 20 L20 60 Z" fill="#7a3b2e"/>
+        <path d="M25 60 L45 10 L45 60 Z" fill="#7a3b2e"/>
+        <path d="M50 60 L70 0 L70 60 Z" fill="#7a3b2e"/>
+      </svg>
+      <span style="font-weight:700; color:var(--ink); font-size:0.95rem;">Russian River AI Partners</span>
+    </div>
+    <p>Serving Sonoma County &amp; the North Bay</p>
     <p style="margin-top:8px;"><a href="mailto:info@russianriveraipartners.com">info@russianriveraipartners.com</a></p>
   </div>
 </footer>
