@@ -247,7 +247,7 @@
       <a href="#approach">Approach</a>
       <a href="#services">Services</a>
       <a href="#faq">FAQ</a>
-      <a href="https://calendly.com/russianriverai/free-30-minute-ai-marketing-consultation" target="_blank" rel="noopener" class="cta-btn ghost" style="margin-left:20px;">Book Free Call</a>
+      <a href="#contact" class="cta-btn ghost" style="margin-left:20px;">Get in Touch</a>
     </nav>
   </div>
 </header>
@@ -258,7 +258,7 @@
     <h1>Local Sonoma County AI Consulting &amp; Marketing</h1>
     <p class="sub">We help owner-operated local businesses figure out what's actually worth doing with AI and marketing, and just as often, tell you what to skip. No software to install, no long contracts, no jargon.</p>
     <div class="hero-ctas">
-      <a href="https://calendly.com/russianriverai/free-30-minute-ai-marketing-consultation" target="_blank" rel="noopener" class="cta-btn">Book a Free 30-Minute Consultation</a>
+      <a href="#contact" class="cta-btn">Send Us a Quick Inquiry</a>
     </div>
 
     <div class="stats-strip">
@@ -385,24 +385,19 @@
 <section id="contact" class="final-cta">
   <div class="wrap">
     <h2>Let's Talk About Your Business</h2>
-    <p>Free 30-minute consultation. No pressure, no obligation, just an honest read on what's worth doing.</p>
-    <a href="https://calendly.com/russianriverai/free-30-minute-ai-marketing-consultation" target="_blank" rel="noopener" class="cta-btn">Book Your Free Consultation</a>
-  </div>
-</section>
+    <p>Leave your email and we'll send a few quick questions, plus our quarterly marketing report. No pressure, no obligation, just an honest read on what's worth doing.</p>
 
-<section id="newsletter" class="alt">
-  <div class="wrap" style="max-width:520px; text-align:center;">
-    <h2 style="font-size:1.35rem; margin-bottom:10px;">Sign up for our quarterly marketing report</h2>
-    <p style="color:var(--ink-soft); margin-bottom:24px; font-size:0.95rem;">Get insights on local trends, AI tools, and what's working for Sonoma County businesses.</p>
-    <form action="https://assets.mailerlite.com/jsonp/2505974/forms/192840175391343862/subscribe" method="post" target="rrai-ml-frame-inline" style="display:flex; gap:10px; max-width:400px; margin:0 auto; flex-wrap:wrap;" id="rrai-newsletter-inline-form">
-      <input type="email" name="fields[email]" placeholder="you@business.com" required autocomplete="email" style="flex:1; min-width:200px; border:1px solid var(--line); border-radius:8px; padding:11px 12px; font-size:0.92rem; font-family:inherit;">
-      <input type="hidden" name="ml-submit" value="1">
-      <input type="hidden" name="anticsrf" value="true">
-      <button type="submit" style="background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font-weight:600; font-size:0.92rem; cursor:pointer;">Subscribe</button>
-    </form>
-    <div id="rrai-newsletter-inline-thanks" style="display:none; margin-top:14px; color:var(--ink-soft); font-size:0.92rem;">Thanks! You're on the list.</div>
-    <div style="margin-top:12px; font-size:0.8rem; color:var(--ink-soft);">You can unsubscribe anytime. For more details, review our <a href="privacy.html" style="color:var(--accent);">Privacy Policy</a>.</div>
-    <iframe name="rrai-ml-frame-inline" style="display:none;"></iframe>
+    <div style="margin-top:24px;">
+      <form action="https://assets.mailerlite.com/jsonp/2505974/forms/192842615590225366/subscribe" method="post" target="rrai-ml-frame-consult" style="display:flex; gap:8px; max-width:360px; margin:0 auto; flex-wrap:wrap;" id="rrai-consult-form">
+        <input type="email" name="fields[email]" placeholder="you@business.com" required autocomplete="email" style="flex:1; min-width:180px; border:1px solid var(--line); border-radius:8px; padding:11px 12px; font-size:0.92rem; font-family:inherit;">
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+        <button type="submit" style="background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font-weight:600; font-size:0.92rem; cursor:pointer;">Send me questions</button>
+      </form>
+      <div id="rrai-consult-thanks" style="display:none; margin-top:10px; color:var(--ink-soft); font-size:0.85rem;">Check your inbox, we just sent you a few quick questions.</div>
+      <div style="margin-top:10px; font-size:0.78rem; color:var(--ink-soft);">You can unsubscribe anytime. For more details, review our <a href="privacy.html" style="color:var(--accent);">Privacy Policy</a>.</div>
+      <iframe name="rrai-ml-frame-consult" style="display:none;"></iframe>
+    </div>
   </div>
 </section>
 
@@ -414,6 +409,16 @@
         setTimeout(() => {
           inlineForm.style.display = 'none';
           document.getElementById('rrai-newsletter-inline-thanks').style.display = 'block';
+        }, 600);
+      });
+    }
+
+    const consultForm = document.getElementById('rrai-consult-form');
+    if (consultForm) {
+      consultForm.addEventListener('submit', () => {
+        setTimeout(() => {
+          consultForm.style.display = 'none';
+          document.getElementById('rrai-consult-thanks').style.display = 'block';
         }, 600);
       });
     }
@@ -465,13 +470,13 @@
 
   #rrai-chat-btn {
     position: fixed; bottom: 22px; right: 22px; z-index: 999;
-    width: 82px; height: 82px; border-radius: 50%;
+    width: 49px; height: 49px; border-radius: 50%;
     background: var(--accent); border: none; cursor: pointer;
     box-shadow: 0 4px 16px rgba(0,0,0,0.18);
     display: flex; align-items: center; justify-content: center;
   }
   #rrai-chat-teaser {
-    position: fixed; bottom: 114px; right: 22px; z-index: 999;
+    position: fixed; bottom: 82px; right: 22px; z-index: 999;
     background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
     padding: 12px 32px 12px 14px; max-width: 220px; width: max-content;
     font-size: 0.85rem; color: var(--ink); line-height: 1.4;
@@ -491,7 +496,7 @@
   }
   @keyframes rraiTeaserIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
   #rrai-chat-panel {
-    position: fixed; bottom: 116px; right: 22px; z-index: 999;
+    position: fixed; bottom: 84px; right: 22px; z-index: 999;
     width: 420px; max-width: calc(100vw - 44px);
     height: 600px; max-height: calc(100vh - 140px);
     background: var(--paper); border: 1px solid var(--line);
@@ -520,8 +525,8 @@
 <div id="rrai-newsletter-overlay">
   <div id="rrai-newsletter-card">
     <button id="rrai-newsletter-close" aria-label="Close">&times;</button>
-    <h3>Sign up for our quarterly marketing report</h3>
-    <p>Get insights on local trends, AI tools, and what's working for Sonoma County businesses.</p>
+    <h3>Get our quarterly marketing report</h3>
+    <p>Marketing trends and AI tips, straight to your inbox.</p>
 
     <form id="rrai-newsletter-form" action="https://assets.mailerlite.com/jsonp/2505974/forms/192840175391343862/subscribe" method="post" target="rrai-ml-frame">
       <input type="email" name="fields[email]" placeholder="you@business.com" required autocomplete="email">
@@ -543,7 +548,7 @@
 </div>
 
 <button id="rrai-chat-btn" aria-label="Open chat">
-  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <svg width="33" height="33" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M4 4h16a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H9l-5 4v-4H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" fill="#faf8f4"/>
   </svg>
 </button>
