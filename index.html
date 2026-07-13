@@ -392,8 +392,8 @@
 
 <section id="newsletter" class="alt">
   <div class="wrap" style="max-width:520px; text-align:center;">
-    <h2 style="font-size:1.35rem; margin-bottom:10px;">Sonoma AI &amp; Marketing Quarterly</h2>
-    <p style="color:var(--ink-soft); margin-bottom:24px; font-size:0.95rem;">Honest, quarterly AI and marketing insights for Sonoma County businesses. No spam, ever.</p>
+    <h2 style="font-size:1.35rem; margin-bottom:10px;">Sign up for our quarterly marketing report</h2>
+    <p style="color:var(--ink-soft); margin-bottom:24px; font-size:0.95rem;">Get insights on local trends, AI tools, and what's working for Sonoma County businesses.</p>
     <form action="https://assets.mailerlite.com/jsonp/2505974/forms/192840175391343862/subscribe" method="post" target="rrai-ml-frame-inline" style="display:flex; gap:10px; max-width:400px; margin:0 auto; flex-wrap:wrap;" id="rrai-newsletter-inline-form">
       <input type="email" name="fields[email]" placeholder="you@business.com" required autocomplete="email" style="flex:1; min-width:200px; border:1px solid var(--line); border-radius:8px; padding:11px 12px; font-size:0.92rem; font-family:inherit;">
       <input type="hidden" name="ml-submit" value="1">
@@ -401,6 +401,7 @@
       <button type="submit" style="background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font-weight:600; font-size:0.92rem; cursor:pointer;">Subscribe</button>
     </form>
     <div id="rrai-newsletter-inline-thanks" style="display:none; margin-top:14px; color:var(--ink-soft); font-size:0.92rem;">Thanks! You're on the list.</div>
+    <div style="margin-top:12px; font-size:0.8rem; color:var(--ink-soft);">You can unsubscribe anytime. For more details, review our <a href="privacy.html" style="color:var(--accent);">Privacy Policy</a>.</div>
     <iframe name="rrai-ml-frame-inline" style="display:none;"></iframe>
   </div>
 </section>
@@ -443,36 +444,56 @@
   }
   #rrai-newsletter-overlay.open { display: flex; }
   #rrai-newsletter-card {
-    background: var(--paper); border-radius: 14px; max-width: 400px; width: 100%;
-    padding: 32px 28px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    background: var(--paper); border-radius: 12px; max-width: 340px; width: 100%;
+    padding: 22px 22px 18px; position: relative; box-shadow: 0 12px 40px rgba(0,0,0,0.18);
   }
   #rrai-newsletter-close {
-    position: absolute; top: 14px; right: 16px; background: none; border: none;
-    font-size: 1.3rem; color: var(--ink-soft); cursor: pointer; line-height: 1;
+    position: absolute; top: 10px; right: 12px; background: none; border: none;
+    font-size: 1.1rem; color: var(--ink-soft); cursor: pointer; line-height: 1;
   }
-  #rrai-newsletter-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
-  #rrai-newsletter-card p { color: var(--ink-soft); font-size: 0.92rem; margin-bottom: 18px; line-height: 1.55; }
-  #rrai-newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+  #rrai-newsletter-card h3 { font-size: 0.98rem; font-weight: 600; margin: 0 0 5px; padding-right: 16px; }
+  #rrai-newsletter-card p { color: var(--ink-soft); font-size: 0.8rem; margin-bottom: 14px; line-height: 1.45; }
+  #rrai-newsletter-form { display: flex; gap: 8px; }
   #rrai-newsletter-form input[type="email"] {
-    border: 1px solid var(--line); border-radius: 8px; padding: 11px 12px; font-size: 0.92rem; font-family: inherit;
+    flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: 7px; padding: 8px 10px; font-size: 0.82rem; font-family: inherit;
   }
   #rrai-newsletter-form button {
-    background: var(--accent); color: #fff; border: none; border-radius: 8px;
-    padding: 11px; font-weight: 600; font-size: 0.92rem; cursor: pointer;
+    background: var(--accent); color: #fff; border: none; border-radius: 7px;
+    padding: 8px 14px; font-weight: 600; font-size: 0.82rem; cursor: pointer; white-space: nowrap;
   }
-  #rrai-newsletter-fineprint { font-size: 0.78rem; color: var(--ink-soft); margin-top: 12px; text-align: center; }
+  #rrai-newsletter-fineprint { font-size: 0.7rem; color: var(--ink-soft); margin-top: 10px; text-align: left; }
 
   #rrai-chat-btn {
     position: fixed; bottom: 22px; right: 22px; z-index: 999;
-    width: 58px; height: 58px; border-radius: 50%;
+    width: 82px; height: 82px; border-radius: 50%;
     background: var(--accent); border: none; cursor: pointer;
     box-shadow: 0 4px 16px rgba(0,0,0,0.18);
     display: flex; align-items: center; justify-content: center;
   }
+  #rrai-chat-teaser {
+    position: fixed; bottom: 114px; right: 22px; z-index: 999;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
+    padding: 12px 32px 12px 14px; max-width: 220px; width: max-content;
+    font-size: 0.85rem; color: var(--ink); line-height: 1.4;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    display: none; cursor: pointer;
+  }
+  #rrai-chat-teaser.show { display: block; animation: rraiTeaserIn 0.25s ease; }
+  #rrai-chat-teaser::after {
+    content: ''; position: absolute; bottom: -8px; right: 26px;
+    width: 14px; height: 14px; background: var(--paper);
+    border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    transform: rotate(45deg);
+  }
+  #rrai-chat-teaser-close {
+    position: absolute; top: 6px; right: 8px; background: none; border: none;
+    color: var(--ink-soft); font-size: 1rem; cursor: pointer; line-height: 1; padding: 2px;
+  }
+  @keyframes rraiTeaserIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
   #rrai-chat-panel {
-    position: fixed; bottom: 92px; right: 22px; z-index: 999;
-    width: 340px; max-width: calc(100vw - 44px);
-    height: 460px; max-height: calc(100vh - 140px);
+    position: fixed; bottom: 116px; right: 22px; z-index: 999;
+    width: 420px; max-width: calc(100vw - 44px);
+    height: 600px; max-height: calc(100vh - 140px);
     background: var(--paper); border: 1px solid var(--line);
     border-radius: 14px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
     display: none; flex-direction: column; overflow: hidden;
@@ -499,8 +520,8 @@
 <div id="rrai-newsletter-overlay">
   <div id="rrai-newsletter-card">
     <button id="rrai-newsletter-close" aria-label="Close">&times;</button>
-    <h3>Sonoma AI &amp; Marketing Quarterly</h3>
-    <p>Honest, quarterly AI and marketing insights for Sonoma County businesses. No spam, ever.</p>
+    <h3>Sign up for our quarterly marketing report</h3>
+    <p>Get insights on local trends, AI tools, and what's working for Sonoma County businesses.</p>
 
     <form id="rrai-newsletter-form" action="https://assets.mailerlite.com/jsonp/2505974/forms/192840175391343862/subscribe" method="post" target="rrai-ml-frame">
       <input type="email" name="fields[email]" placeholder="you@business.com" required autocomplete="email">
@@ -511,16 +532,19 @@
     <div id="rrai-newsletter-thanks" style="display:none;">
       <p style="margin:0;">Thanks! You're on the list.</p>
     </div>
-    <div id="rrai-newsletter-fineprint">We'll only send it a few times a year.</div>
+    <div id="rrai-newsletter-fineprint">You can unsubscribe anytime. For more details, review our <a href="privacy.html" style="color:inherit; text-decoration:underline;">Privacy Policy</a>.</div>
     <iframe name="rrai-ml-frame" style="display:none;"></iframe>
   </div>
 </div>
 
+<div id="rrai-chat-teaser">
+  <button id="rrai-chat-teaser-close" aria-label="Dismiss">&times;</button>
+  Questions about AI for your business? Ask us anything.
+</div>
+
 <button id="rrai-chat-btn" aria-label="Open chat">
-  <svg width="34" height="30" viewBox="0 0 70 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M0 60 L20 20 L20 60 Z" fill="#faf8f4"/>
-    <path d="M25 60 L45 10 L45 60 Z" fill="#faf8f4"/>
-    <path d="M50 60 L70 0 L70 60 Z" fill="#faf8f4"/>
+  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M4 4h16a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H9l-5 4v-4H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" fill="#faf8f4"/>
   </svg>
 </button>
 
@@ -580,8 +604,21 @@
     }
   })();
 
-  rraiBtn.addEventListener('click', () => rraiPanel.classList.toggle('open'));
+  rraiBtn.addEventListener('click', () => { rraiPanel.classList.toggle('open'); rraiTeaser.classList.remove('show'); });
   rraiClose.addEventListener('click', () => rraiPanel.classList.remove('open'));
+
+  // Chat teaser bubble
+  const rraiTeaser = document.getElementById('rrai-chat-teaser');
+  const rraiTeaserClose = document.getElementById('rrai-chat-teaser-close');
+  if (!sessionStorage.getItem('rrai_chat_teaser_seen')) {
+    setTimeout(() => {
+      rraiTeaser.classList.add('show');
+      sessionStorage.setItem('rrai_chat_teaser_seen', '1');
+      setTimeout(() => rraiTeaser.classList.remove('show'), 10000);
+    }, 6000);
+  }
+  rraiTeaser.addEventListener('click', () => { rraiPanel.classList.add('open'); rraiTeaser.classList.remove('show'); });
+  rraiTeaserClose.addEventListener('click', (e) => { e.stopPropagation(); rraiTeaser.classList.remove('show'); });
 
   function rraiAddMessage(role, text) {
     const div = document.createElement('div');
