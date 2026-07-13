@@ -390,6 +390,35 @@
   </div>
 </section>
 
+<section id="newsletter" class="alt">
+  <div class="wrap" style="max-width:520px; text-align:center;">
+    <h2 style="font-size:1.35rem; margin-bottom:10px;">Sonoma AI &amp; Marketing Quarterly</h2>
+    <p style="color:var(--ink-soft); margin-bottom:24px; font-size:0.95rem;">Honest, quarterly AI and marketing insights for Sonoma County businesses. No spam, ever.</p>
+    <form action="https://assets.mailerlite.com/jsonp/2505974/forms/192840175391343862/subscribe" method="post" target="rrai-ml-frame-inline" style="display:flex; gap:10px; max-width:400px; margin:0 auto; flex-wrap:wrap;" id="rrai-newsletter-inline-form">
+      <input type="email" name="fields[email]" placeholder="you@business.com" required autocomplete="email" style="flex:1; min-width:200px; border:1px solid var(--line); border-radius:8px; padding:11px 12px; font-size:0.92rem; font-family:inherit;">
+      <input type="hidden" name="ml-submit" value="1">
+      <input type="hidden" name="anticsrf" value="true">
+      <button type="submit" style="background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font-weight:600; font-size:0.92rem; cursor:pointer;">Subscribe</button>
+    </form>
+    <div id="rrai-newsletter-inline-thanks" style="display:none; margin-top:14px; color:var(--ink-soft); font-size:0.92rem;">Thanks! You're on the list.</div>
+    <iframe name="rrai-ml-frame-inline" style="display:none;"></iframe>
+  </div>
+</section>
+
+<script>
+  (function() {
+    const inlineForm = document.getElementById('rrai-newsletter-inline-form');
+    if (inlineForm) {
+      inlineForm.addEventListener('submit', () => {
+        setTimeout(() => {
+          inlineForm.style.display = 'none';
+          document.getElementById('rrai-newsletter-inline-thanks').style.display = 'block';
+        }, 600);
+      });
+    }
+  })();
+</script>
+
 <footer>
   <div class="wrap">
     <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:10px;">
@@ -406,6 +435,33 @@
 </footer>
 
 <style>
+  #rrai-newsletter-overlay {
+    position: fixed; inset: 0; z-index: 998;
+    background: rgba(26,29,31,0.5);
+    display: none; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  #rrai-newsletter-overlay.open { display: flex; }
+  #rrai-newsletter-card {
+    background: var(--paper); border-radius: 14px; max-width: 400px; width: 100%;
+    padding: 32px 28px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  }
+  #rrai-newsletter-close {
+    position: absolute; top: 14px; right: 16px; background: none; border: none;
+    font-size: 1.3rem; color: var(--ink-soft); cursor: pointer; line-height: 1;
+  }
+  #rrai-newsletter-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+  #rrai-newsletter-card p { color: var(--ink-soft); font-size: 0.92rem; margin-bottom: 18px; line-height: 1.55; }
+  #rrai-newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+  #rrai-newsletter-form input[type="email"] {
+    border: 1px solid var(--line); border-radius: 8px; padding: 11px 12px; font-size: 0.92rem; font-family: inherit;
+  }
+  #rrai-newsletter-form button {
+    background: var(--accent); color: #fff; border: none; border-radius: 8px;
+    padding: 11px; font-weight: 600; font-size: 0.92rem; cursor: pointer;
+  }
+  #rrai-newsletter-fineprint { font-size: 0.78rem; color: var(--ink-soft); margin-top: 12px; text-align: center; }
+
   #rrai-chat-btn {
     position: fixed; bottom: 22px; right: 22px; z-index: 999;
     width: 58px; height: 58px; border-radius: 50%;
@@ -440,6 +496,26 @@
   #rrai-chat-send { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 0 14px; font-weight: 600; cursor: pointer; font-size: 0.85rem; }
 </style>
 
+<div id="rrai-newsletter-overlay">
+  <div id="rrai-newsletter-card">
+    <button id="rrai-newsletter-close" aria-label="Close">&times;</button>
+    <h3>Sonoma AI &amp; Marketing Quarterly</h3>
+    <p>Honest, quarterly AI and marketing insights for Sonoma County businesses. No spam, ever.</p>
+
+    <form id="rrai-newsletter-form" action="https://assets.mailerlite.com/jsonp/2505974/forms/192840175391343862/subscribe" method="post" target="rrai-ml-frame">
+      <input type="email" name="fields[email]" placeholder="you@business.com" required autocomplete="email">
+      <input type="hidden" name="ml-submit" value="1">
+      <input type="hidden" name="anticsrf" value="true">
+      <button type="submit">Subscribe</button>
+    </form>
+    <div id="rrai-newsletter-thanks" style="display:none;">
+      <p style="margin:0;">Thanks! You're on the list.</p>
+    </div>
+    <div id="rrai-newsletter-fineprint">We'll only send it a few times a year.</div>
+    <iframe name="rrai-ml-frame" style="display:none;"></iframe>
+  </div>
+</div>
+
 <button id="rrai-chat-btn" aria-label="Open chat">
   <svg width="34" height="30" viewBox="0 0 70 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M0 60 L20 20 L20 60 Z" fill="#faf8f4"/>
@@ -473,6 +549,36 @@
   const rraiInput = document.getElementById('rrai-chat-input');
   const rraiSend = document.getElementById('rrai-chat-send');
   let rraiHistory = [];
+
+  // Newsletter popup
+  (function() {
+    const overlay = document.getElementById('rrai-newsletter-overlay');
+    const closeBtn = document.getElementById('rrai-newsletter-close');
+    const form = document.getElementById('rrai-newsletter-form');
+    const dismissedKey = 'rrai_newsletter_dismissed';
+
+    if (!localStorage.getItem(dismissedKey)) {
+      setTimeout(() => overlay.classList.add('open'), 4000);
+    }
+
+    function dismiss() {
+      overlay.classList.remove('open');
+      localStorage.setItem(dismissedKey, '1');
+    }
+
+    closeBtn.addEventListener('click', dismiss);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) dismiss(); });
+
+    if (form) {
+      form.addEventListener('submit', () => {
+        localStorage.setItem(dismissedKey, '1');
+        setTimeout(() => {
+          form.style.display = 'none';
+          document.getElementById('rrai-newsletter-thanks').style.display = 'block';
+        }, 600);
+      });
+    }
+  })();
 
   rraiBtn.addEventListener('click', () => rraiPanel.classList.toggle('open'));
   rraiClose.addEventListener('click', () => rraiPanel.classList.remove('open'));
