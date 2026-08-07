@@ -184,22 +184,30 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #8a8f94;
-    margin-bottom: 14px;
+    margin-bottom: 18px;
   }
   .worked-at .companies {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    gap: 26px 38px;
   }
-  .worked-at .companies span {
-    padding: 0 18px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: #6a6f74;
-    border-right: 1px solid var(--line);
+  .worked-at .companies img {
+    height: 26px;
+    width: auto;
+    max-width: 110px;
+    object-fit: contain;
+    filter: grayscale(1) opacity(0.55);
+    transition: filter 0.2s ease;
   }
-  .worked-at .companies span:last-child { border-right: none; }
+  .worked-at .companies img:hover {
+    filter: grayscale(0) opacity(1);
+  }
+  @media (max-width: 600px) {
+    .worked-at .companies { gap: 18px 26px; }
+    .worked-at .companies img { height: 20px; max-width: 88px; }
+  }
 
   .process-grid {
     display: grid;
@@ -271,12 +279,12 @@
     <div class="worked-at">
       <div class="eyebrow-small">Our team's background includes time at</div>
       <div class="companies">
-        <span>Amazon</span>
-        <span>Activision</span>
-        <span>Scopely</span>
-        <span>Adidas</span>
-        <span>Michael Kors</span>
-        <span>Kate Spade</span>
+        <img src="logos/amazon.png" alt="Amazon" loading="lazy">
+        <img src="logos/activision.png" alt="Activision" loading="lazy">
+        <img src="logos/scopely.png" alt="Scopely" loading="lazy">
+        <img src="logos/adidas.png" alt="Adidas" loading="lazy">
+        <img src="logos/michael-kors.png" alt="Michael Kors" loading="lazy">
+        <img src="logos/kate-spade.png" alt="Kate Spade" loading="lazy">
       </div>
     </div>
   </div>
@@ -285,7 +293,7 @@
 <section id="approach" class="alt">
   <div class="wrap">
     <h2>How We Work</h2>
-    <p class="section-sub">Three steps, every time. No jargon, no surprise invoices.</p>
+    <p class="section-sub">Three steps, every time. No jargon, no surprises.</p>
     <div class="process-grid">
       <div class="process-step">
         <span class="step-num">01</span>
@@ -295,12 +303,12 @@
       <div class="process-step">
         <span class="step-num">02</span>
         <h3>Build</h3>
-        <p>A small setup fee to build the specific thing that addresses your real opportunity, whether that's an AI tool, a website, or a marketing system. Scoped and priced upfront.</p>
+        <p>We build the specific solution that addresses your real opportunity, whether that's an AI tool, a website, or a marketing system. Everything is scoped and agreed upfront, before any work begins.</p>
       </div>
       <div class="process-step">
         <span class="step-num">03</span>
         <h3>Manage</h3>
-        <p>A low monthly rate where we run and monitor what we built, with a plain-language readout each month showing what's working and what to adjust.</p>
+        <p>We run and monitor what we built, with a plain-language readout each month showing what's working and what to adjust.</p>
       </div>
     </div>
   </div>
@@ -313,7 +321,7 @@
     <div class="services-grid">
       <div class="service-card">
         <h3>AI Consulting</h3>
-        <p>Readiness assessments, honest tool recommendations, and straightforward implementation, priced on judgment rather than hours worked. We'll tell you what's worth doing, and just as often, what isn't.</p>
+        <p>Readiness assessments, honest tool recommendations, and straightforward implementation. We'll tell you what's worth doing, and just as often, what isn't.</p>
       </div>
       <div class="service-card">
         <h3>Creative Testing &amp; Optimization</h3>
@@ -325,7 +333,7 @@
       </div>
       <div class="service-card">
         <h3>Ongoing Management</h3>
-        <p>A small setup fee to get started, then a low monthly rate where we manage what we built and send you a plain-language monthly readout of what's actually working, and what isn't. No long-term contract required.</p>
+        <p>We manage what we built on an ongoing basis and send you a plain-language monthly readout of what's actually working, and what isn't. No long-term contract required.</p>
       </div>
       <div class="service-card">
         <h3>Local Visibility &amp; SEO</h3>
